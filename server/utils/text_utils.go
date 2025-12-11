@@ -10,23 +10,19 @@ import (
 	"golang.org/x/text/language"
 )
 
-// ToUpperCase converts text to uppercase
 func ToUpperCase(text string) string {
 	return strings.ToUpper(text)
 }
 
-// ToLowerCase converts text to lowercase
 func ToLowerCase(text string) string {
 	return strings.ToLower(text)
 }
 
-// ToTitleCase converts text to title case
 func ToTitleCase(text string) string {
 	caser := cases.Title(language.English)
 	return caser.String(text)
 }
 
-// ReverseText reverses the input text
 func ReverseText(text string) string {
 	runes := []rune(text)
 	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
@@ -35,15 +31,12 @@ func ReverseText(text string) string {
 	return string(runes)
 }
 
-// WordCount returns word, character, line, and paragraph counts
 func WordCount(text string) map[string]int {
 	text = strings.TrimSpace(text)
 
-	// Count lines
 	lines := strings.Split(text, "\n")
 	lineCount := len(lines)
 
-	// Count paragraphs (separated by blank lines)
 	paragraphs := strings.Split(text, "\n\n")
 	paragraphCount := 0
 	for _, p := range paragraphs {
@@ -52,11 +45,9 @@ func WordCount(text string) map[string]int {
 		}
 	}
 
-	// Count characters (with and without spaces)
 	charCount := len(text)
 	charNoSpaces := len(strings.ReplaceAll(strings.ReplaceAll(text, " ", ""), "\n", ""))
 
-	// Count words
 	words := strings.Fields(text)
 	wordCount := len(words)
 
@@ -69,12 +60,10 @@ func WordCount(text string) map[string]int {
 	}
 }
 
-// TrimText trims whitespace from text
 func TrimText(text string) string {
 	return strings.TrimSpace(text)
 }
 
-// FindReplace finds and replaces text
 func FindReplace(text, find, replace string, caseSensitive bool) string {
 	if !caseSensitive {
 		re := regexp.MustCompile("(?i)" + regexp.QuoteMeta(find))
@@ -83,7 +72,6 @@ func FindReplace(text, find, replace string, caseSensitive bool) string {
 	return strings.ReplaceAll(text, find, replace)
 }
 
-// RemoveDuplicateLines removes duplicate lines from text
 func RemoveDuplicateLines(text string) string {
 	lines := strings.Split(text, "\n")
 	seen := make(map[string]bool)
@@ -99,7 +87,6 @@ func RemoveDuplicateLines(text string) string {
 	return strings.Join(result, "\n")
 }
 
-// SortLines sorts lines alphabetically
 func SortLines(text string, ascending bool) string {
 	lines := strings.Split(text, "\n")
 
@@ -113,7 +100,6 @@ func SortLines(text string, ascending bool) string {
 	return strings.Join(lines, "\n")
 }
 
-// ConvertCase converts between different case formats
 func ConvertCase(text, caseType string) string {
 	switch caseType {
 	case "camelCase":
@@ -182,7 +168,6 @@ func splitWords(s string) []string {
 
 	for i, r := range s {
 		if unicode.IsLetter(r) || unicode.IsNumber(r) {
-			// Check for camelCase transition
 			if i > 0 && unicode.IsUpper(r) && unicode.IsLower(rune(s[i-1])) {
 				if currentWord.Len() > 0 {
 					words = append(words, currentWord.String())
