@@ -7,7 +7,6 @@ import (
 	"net/http"
 )
 
-//go:embed ui/dist
 var uiAssets embed.FS
 
 func main() {
