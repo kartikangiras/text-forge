@@ -26,3 +26,14 @@ func marshalInterface() ([]byte, error) {
 	}
 	return bytes, nil
 }
+
+func kvJson() {
+	reader := bufio.NewReader(os.Stdin)
+	input, err := reader.ReadString('\n')
+	if err != nil {
+		return nil, fmt.Errorf("failed to retreive data", err)
+	}
+
+	data := make(map[string]string)
+
+}
