@@ -8,9 +8,8 @@ import (
 	"strings"
 )
 
-func main() {
+func marshalInterface(data any) ([]byte, error) {
 	reader := bufio.NewReader(os.Stdin)
-
 	input, err := reader.ReadString('\n')
 	if err != nil {
 		fmt.Printf("error reading input", err)
@@ -18,12 +17,10 @@ func main() {
 	}
 	trimmedInput := strings.TrimSpace(input)
 	fmt.Printf("formatted json string")
-}
-
-func marshalInterface(data any) ([]byte, error) {
 	bytes, err := json.MarshalIndent(data, "", "  ")
 	if err != nil {
 		return nil, fmt.Errorf("failed to indent the json: %w", err)
 	}
 	return bytes, nil
+
 }
