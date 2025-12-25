@@ -4,23 +4,25 @@ import (
 	"bufio"
 	"encoding/json"
 	"fmt"
+	"log"
 	"os"
 	"strings"
 )
 
-func marshalInterface(data any) ([]byte, error) {
+func marshalInterface() ([]byte, error) {
 	reader := bufio.NewReader(os.Stdin)
 	input, err := reader.ReadString('\n')
 	if err != nil {
-		fmt.Printf("error reading input", err)
-		return
+		return nil, fmt.Errorf("failed to reterive data", err)
 	}
-	trimmedInput := strings.TrimSpace(input)
-	fmt.Printf("formatted json string")
+
+	var data interface{}
+	if err := json.Unmarshal([]byte(input), &data); err != nil {
+		log.Fatalf("error unmarshaling json: %v", err)
+	}
 	bytes, err := json.MarshalIndent(data, "", "  ")
 	if err != nil {
-		return nil, fmt.Errorf("failed to indent the json: %w", err)
+		log.Fatalf("error indentation of json: %v", err)
 	}
 	return bytes, nil
-
 }
