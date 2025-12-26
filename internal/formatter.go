@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 )
 
 func marshalInterface() ([]byte, error) {
@@ -31,7 +30,7 @@ func kvJson() {
 	reader := bufio.NewReader(os.Stdin)
 	input, err := reader.ReadString('\n')
 	if err != nil {
-		return nil, fmt.Errorf("failed to retreive data", err)
+		return fmt.Errorf("failed to retreive data", err)
 	}
 
 	data := make(map[string]string)
