@@ -53,7 +53,8 @@ function App() {
   };
 
    return (
-    <div className={`h-screen flex flex-col transition-colors duration-200 ${isDark ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
+    // 1. THEME FIX: Replaced hardcoded gray/white with semantic background/foreground
+    <div className={`h-screen flex flex-col transition-colors duration-200 bg-background text-foreground`}>
       
       <Header isDark={isDark} onThemeToggle={toggleTheme} />
 
@@ -62,9 +63,9 @@ function App() {
       <div className="flex-1 flex flex-col overflow-hidden min-h-0">
 
         {activeTool === 'generators' ? (
-          // FIXED: Changed overflow-hidden to overflow-y-auto for Generators view
           <div className="flex-1 flex flex-col overflow-y-auto max-w-4xl mx-auto w-full p-4">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-4 shrink-0">
+            {/* 2. THEME FIX: 'bg-card' handles the container background automatically */}
+            <div className="bg-card text-card-foreground border border-border rounded-lg shadow-sm p-6 mb-4 shrink-0">
               {renderToolComponent()}
             </div>
             <div className="shrink-0">
@@ -81,7 +82,8 @@ function App() {
           
           <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
 
-            <div className="flex-1 p-4 flex flex-col border-r border-gray-200 dark:border-gray-700">
+            {/* 3. THEME FIX: standardized border color */}
+            <div className="flex-1 p-4 flex flex-col border-r border-border">
               <TextArea
                 label="Input"
                 value={input}
@@ -91,15 +93,12 @@ function App() {
               />
             </div>
 
-            {/* FIXED: Added overflow-y-auto here to enable scrolling for the Right Column */}
-            <div className="flex-1 flex flex-col overflow-y-auto min-h-0 bg-gray-50/50 dark:bg-gray-900/50">
+            <div className="flex-1 flex flex-col overflow-y-auto min-h-0 bg-muted/30">
 
-              {/* Tool Section */}
-              <div className="border-b border-gray-200 dark:border-gray-700 p-4 bg-gray-50 dark:bg-gray-800/50 shrink-0">
+              <div className="border-b border-border p-4 bg-background/50 shrink-0">
                 {renderToolComponent()}
               </div>
               
-              {/* Output Section */}
               <div className="flex-1 px-4 pb-4 pt-2 flex flex-col shrink-0">
                 <TextArea
                   label="Output"

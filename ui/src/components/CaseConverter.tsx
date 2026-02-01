@@ -37,7 +37,7 @@ const CaseConverter: React.FC<CaseConverterProps> = ({ input, onOutput }) => {
     return (
         <div className="space-y-6">
             <div>
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                <h2 className="text-md font-semibold text-gray-900 dark:text-gray-100 mb-1">
                     Case Converter
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400 text-sm">
