@@ -53,7 +53,6 @@ function App() {
   };
 
    return (
-    // 1. THEME FIX: Replaced hardcoded gray/white with semantic background/foreground
     <div className={`h-screen flex flex-col transition-colors duration-200 bg-background text-foreground`}>
       
       <Header isDark={isDark} onThemeToggle={toggleTheme} />
@@ -64,7 +63,6 @@ function App() {
 
         {activeTool === 'generators' ? (
           <div className="flex-1 flex flex-col overflow-y-auto max-w-4xl mx-auto w-full p-4">
-            {/* 2. THEME FIX: 'bg-card' handles the container background automatically */}
             <div className="bg-card text-card-foreground border border-border rounded-lg shadow-sm p-6 mb-4 shrink-0">
               {renderToolComponent()}
             </div>
@@ -82,7 +80,6 @@ function App() {
           
           <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
 
-            {/* 3. THEME FIX: standardized border color */}
             <div className="flex-1 p-4 flex flex-col border-r border-border">
               <TextArea
                 label="Input"

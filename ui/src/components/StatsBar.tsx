@@ -31,6 +31,7 @@ const StatsBar: React.FC<StatsBarProps> = ({ stats }) => {
               <span className="text-sm font-bold text-purple-600 dark:text-purple-400">
                 {item.value.toLocaleString()}
               </span>
+              
             </div>
           );
         })}
