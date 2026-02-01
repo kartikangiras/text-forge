@@ -10,7 +10,7 @@ interface CodeFormatterProps {
 const CodeFormatter: React.FC<CodeFormatterProps> = ({ input, onOutput }) => {
   const [error, setError] = useState<string>('');
 
-const handleFormat = async (action: string) => {
+  const handleFormat = async (action: string) => {
     setError('');
 
     const endpointMap: Record<string, string> = {
@@ -36,7 +36,7 @@ const handleFormat = async (action: string) => {
         setError(err instanceof Error ? err.message : "an error occured");
         console.error(err);
       }
-};
+  };
 
    const tools = [
     {
@@ -59,17 +59,17 @@ const handleFormat = async (action: string) => {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-md font-semibold text-gray-900 dark:text-gray-100 mb-2">
+        <h2 className="text-md font-semibold text-foreground mb-2">
           Code & Data Formatter
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 text-sm">
+        <p className="text-muted-foreground text-sm">
           Format, beautify, and convert code and data structures
         </p>
       </div>
 
       {error && (
-        <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-          <p className="text-red-700 dark:text-red-400 text-sm">{error}</p>
+        <div className="p-3 bg-destructive/15 border border-destructive/20 rounded-lg">
+          <p className="text-destructive text-sm">{error}</p>
         </div>
       )}
 
@@ -78,13 +78,13 @@ const handleFormat = async (action: string) => {
           return (
             <div
               key={tool.action}
-              className="p-2 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-colors flex flex-col justify-between"
+              className="p-2 bg-card rounded-lg border border-border hover:border-primary transition-colors flex flex-col justify-between"
             >
               <div>
-                <h3 className="font-medium text-sm text-gray-900 dark:text-gray-100 mb-1">
+                <h3 className="font-medium text-sm text-foreground mb-1">
                   {tool.label}
                 </h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2 leading-tight">
+                <p className="text-xs text-muted-foreground mb-2 leading-tight">
                   {tool.description}
                 </p>
               </div>
@@ -101,13 +101,13 @@ const handleFormat = async (action: string) => {
         })}
       </div>
 
-      <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3 mt-3">
-        <h3 className="text-sm font-medium text-blue-900 dark:text-blue-100 mb-1">
+      <div className="bg-muted border border-border rounded-lg p-3 mt-3">
+        <h3 className="text-sm font-medium text-foreground mb-1">
           Key-Value Format Example
         </h3>
-        <code className="text-xs text-blue-700 dark:text-blue-300 block">
+        <code className="text-xs text-muted-foreground block">
           name=Kartik Angiras<br/>
-          age=20<br/>
+          number=59<br/>
           planet=Mars
         </code>
       </div>

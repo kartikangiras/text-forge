@@ -40,27 +40,25 @@ const Generators: React.FC<GeneratorsProps> = ({ onOutput }) => {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+        <h2 className="text-xl font-semibold text-foreground mb-2">
           Utility Generators
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 text-sm">
+        <p className="text-muted-foreground text-sm">
           Generate UUIDs, passwords, and other useful data
         </p>
       </div>
 
       {error && (
-        <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-          <p className="text-red-700 dark:text-red-400 text-sm">{error}</p>
+        <div className="p-3 bg-destructive/15 border border-destructive/20 rounded-lg">
+          <p className="text-destructive text-sm">{error}</p>
         </div>
       )}
 
-      {/* Generators Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* UUID Generator */}
-        <div className="bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
-          <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-4">UUID Generator</h3>
+        <div className="bg-card rounded-lg border border-border p-6">
+          <h3 className="font-medium text-foreground mb-4">UUID Generator</h3>
           
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+          <p className="text-sm text-muted-foreground mb-4">
             Generate universally unique identifiers for your applications
           </p>
           
@@ -82,17 +80,15 @@ const Generators: React.FC<GeneratorsProps> = ({ onOutput }) => {
           </div>
         </div>
 
-        {/* Password Generator */}
-        <div className="bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
-          <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-4">Password Generator</h3>
+        <div className="bg-card rounded-lg border border-border p-6">
+          <h3 className="font-medium text-foreground mb-4">Password Generator</h3>
           
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+          <p className="text-sm text-muted-foreground mb-4">
             Generate secure, random passwords with customizable options
           </p>
           
-          {/* Length Slider */}
           <div className="mb-4">
-            <span className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <span className="block text-sm font-medium text-foreground mb-2">
               Length: {passwordLength}
             </span>
             <input
@@ -101,9 +97,9 @@ const Generators: React.FC<GeneratorsProps> = ({ onOutput }) => {
               max="64"
               value={passwordLength}
               onChange={(e) => setPasswordLength(Number(e.target.value))}
-              className="w-full h-2 bg-gray-200 dark:bg-gray-600 rounded-lg appearance-none cursor-pointer slider"
+              className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer slider"
             />
-            <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
+            <div className="flex justify-between text-xs text-muted-foreground mt-1">
               <span>8</span>
               <span>64</span>
             </div>
@@ -120,11 +116,11 @@ const Generators: React.FC<GeneratorsProps> = ({ onOutput }) => {
         </div>
       </div>
 
-      <div className="bg-gray-50 dark:bg-gray-900/80 border border-black-200 dark:border-black-800 rounded-lg p-3 mt-3">
-        <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
+      <div className="bg-muted border border-border rounded-lg p-3 mt-3">
+        <h3 className="font-medium text-foreground mb-1">
           Security Best Practices
         </h3>
-        <p className="text-sm text-gray-700 dark:text-gray-300">
+        <p className="text-sm text-muted-foreground">
           Use strong passwords with mixed characters. UUIDs are suitable for unique identifiers but not for security purposes.
         </p>
       </div>

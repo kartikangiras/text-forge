@@ -15,25 +15,25 @@ const EncodingTools: React.FC<EncodingToolsProps> = ({ input, onOutput }) => {
     setError('');
     setLoading(true);
 
-  const endpointMap: Record<string, string> = {
-    'base64Encode': '/api/fmt/b64en',
-    'base64Decode':  '/api/fmt/b64dec',
-    'urlEncode':     '/api/fmt/urlen',
-    'urlDecode':     '/api/fmt/urldec',
-    'sha256':        '/api/fmt/sha256'
-  }
+    const endpointMap: Record<string, string> = {
+      'base64Encode': '/api/fmt/b64en',
+      'base64Decode':  '/api/fmt/b64dec',
+      'urlEncode':     '/api/fmt/urlen',
+      'urlDecode':     '/api/fmt/urldec',
+      'sha256':        '/api/fmt/sha256'
+    }
 
-  const endpoint = endpointMap[action]
+    const endpoint = endpointMap[action]
 
-  if (!endpoint) {
-    setError("unknow action");
-    return;
-  }
+    if (!endpoint) {
+      setError("unknown action");
+      return;
+    }
 
-  try {
-    const data = await sendRequest(endpoint, {
-      text: input
-    });
+    try {
+      const data = await sendRequest(endpoint, {
+        text: input
+      });
       onOutput(data.result);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
@@ -42,7 +42,7 @@ const EncodingTools: React.FC<EncodingToolsProps> = ({ input, onOutput }) => {
     }
   };
 
-const tools = [
+  const tools = [
     {
       action: 'base64Encode',
       label: 'Encode Base64',
@@ -73,17 +73,17 @@ const tools = [
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-md font-semibold text-gray-900 dark:text-gray-100 mb-1">
+        <h2 className="text-md font-semibold text-foreground mb-1">
           Encoding & Hashing Tools
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 text-sm">
+        <p className="text-muted-foreground text-sm">
           Encode, decode, and hash text for various purposes
         </p>
       </div>
 
       {error && (
-        <div className="p-2 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-          <p className="text-red-700 dark:text-red-400 text-sm">{error}</p>
+        <div className="p-2 bg-destructive/15 border border-destructive/20 rounded-lg">
+          <p className="text-destructive text-sm">{error}</p>
         </div>
       )}
 
@@ -92,19 +92,21 @@ const tools = [
           return (
             <div
               key={tool.action}
-              className="p-2 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-colors"
+              className="p-2 bg-card rounded-lg border border-border hover:border-primary transition-colors flex flex-col justify-between"
             >
-              <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
-                {tool.label}
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                {tool.description}
-              </p>
+              <div>
+                <h3 className="font-medium text-foreground mb-1">
+                  {tool.label}
+                </h3>
+                <p className="text-sm text-muted-foreground mb-2">
+                  {tool.description}
+                </p>
+              </div>
               <ToolButton
                 onClick={() => handleEncoding(tool.action)}
                 disabled={!input.trim() || loading}
                 variant="primary"
-                className="w-full"
+                className="w-full text-xs py-1"
               >
                 {loading && tool.action === 'sha256' ? 'Hashing...' : 'Apply'}
               </ToolButton>
@@ -113,11 +115,11 @@ const tools = [
         })}
       </div>
 
-      <div className="bg-gray-50 dark:bg-gray-900/80 border border-black-200 dark:border-black-800 rounded-lg p-2 mt-3">
-        <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
+      <div className="bg-muted border border-border rounded-lg p-2 mt-3">
+        <h3 className="font-medium text-foreground mb-1 text-sm">
           Security Note
         </h3>
-        <p className="text-xs text-gray-700 dark:text-gray-300">
+        <p className="text-xs text-muted-foreground">
           SHA-256 hashing is one-way and cannot be reversed. Base64 and URL encoding are not encryption methods.
         </p>
       </div>
