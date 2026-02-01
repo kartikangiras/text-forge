@@ -68,6 +68,7 @@ function App() {
             </div>
             <div className="shrink-0">
               <TextArea
+                id="generated-output"
                 label="Generated Output"
                 value={output}
                 readOnly
@@ -82,6 +83,7 @@ function App() {
 
             <div className="flex-1 p-4 flex flex-col border-r border-border">
               <TextArea
+                id="input-text"
                 label="Input"
                 value={input}
                 onChange={setInput}
@@ -98,6 +100,7 @@ function App() {
               
               <div className="flex-1 px-4 pb-4 pt-2 flex flex-col shrink-0">
                 <TextArea
+                  id="output-text"
                   label="Output"
                   value={output}
                   readOnly

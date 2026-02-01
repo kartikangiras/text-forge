@@ -21,19 +21,35 @@ const StatsBar: React.FC<StatsBarProps> = ({ stats }) => {
 
   return (
     <div className="bg-card border-t border-border px-6 py-3">
-      <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6">
-        {statItems.map((item) => {
-          return (
-            <div key={item.label} className="flex items-center space-x-1">
-              <span className="text-sm font-medium text-muted-foreground">
-                {item.label}:
-              </span>
-              <span className="text-sm font-bold text-primary">
-                {item.value.toLocaleString()}
-              </span>
-            </div>
-          );
-        })}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-6">
+          {statItems.map((item) => {
+            return (
+              <div key={item.label} className="flex items-center space-x-1">
+                <span className="text-sm font-medium text-muted-foreground">
+                  {item.label}:
+                </span>
+                <span className="text-sm font-bold text-primary">
+                  {item.value.toLocaleString()}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="text-xs text-muted-foreground whitespace-nowrap">
+          Designed & Developed by{' '}
+          <a 
+            href="https://github.com/kartikangiras" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="font-medium text-primary hover:underline transition-all"
+          >
+            Kartik Angiras
+          </a>
+        </div>
+
       </div>
     </div>
   );
