@@ -45,18 +45,18 @@ const CaseConverter: React.FC<CaseConverterProps> = ({ input, onOutput }) => {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {cases.map((caseItem) => (
                     <div
                         key={caseItem.type}
-                        className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-colors"
+                        className="p-2 bg-gray-50 dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-colors"
                     >
-                        <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-3">
+                        <h3 className="font-medium text-xs text-gray-900 dark:text-gray-100 mb-1">
                             {caseItem.label}
                         </h3>
 
-                        <div className="mb-3 p-2 bg-white dark:bg-gray-900 rounded border">
-                            <code className="text-xs text-gray-600 dark:text-gray-400">
+                        <div className="mb-2 px-1 py-0.5 bg-white dark:bg-gray-900 rounded border">
+                            <code className="text-[10px] text-gray-600 dark:text-gray-400">
                                 {caseItem.preview}
                             </code>
                         </div>
@@ -64,7 +64,7 @@ const CaseConverter: React.FC<CaseConverterProps> = ({ input, onOutput }) => {
                         <button
                             onClick={() => handleConversion(caseItem.type)}
                             disabled={!input.trim()}
-                            className="w-full bg-purple-600 text-white py-2 px-4 rounded hover:bg-purple-700 transition-colors"
+                            className="w-full bg-purple-600 text-white text-xs py-1 rounded hover:bg-purple-700 transition-colors"
                         >
                             Convert
                         </button>

@@ -62,17 +62,20 @@ function App() {
       <div className="flex-1 flex flex-col overflow-hidden min-h-0">
 
         {activeTool === 'generators' ? (
-          <div className="flex-1 flex flex-col overflow-hidden max-w-4xl mx-auto w-full p-4">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-4">
+          // FIXED: Changed overflow-hidden to overflow-y-auto for Generators view
+          <div className="flex-1 flex flex-col overflow-y-auto max-w-4xl mx-auto w-full p-4">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-4 shrink-0">
               {renderToolComponent()}
             </div>
-            <TextArea
-              label="Generated Output"
-              value={output}
-              readOnly
-              placeholder="Result will appear here..." 
-              onChange={() => {}}
-            />
+            <div className="shrink-0">
+              <TextArea
+                label="Generated Output"
+                value={output}
+                readOnly
+                placeholder="Result will appear here" 
+                onChange={() => {}}
+              />
+            </div>
           </div>
         ) : (
           
@@ -83,22 +86,26 @@ function App() {
                 label="Input"
                 value={input}
                 onChange={setInput}
-                placeholder="Paste your text here..."
+                placeholder="Paste your text here"
                 onClear={() => { setInput(''); setOutput(''); }}
               />
             </div>
 
-            <div className="flex-1 flex flex-col min-h-0">
+            {/* FIXED: Added overflow-y-auto here to enable scrolling for the Right Column */}
+            <div className="flex-1 flex flex-col overflow-y-auto min-h-0 bg-gray-50/50 dark:bg-gray-900/50">
 
-              <div className="border-b border-gray-200 dark:border-gray-700 p-4 bg-gray-50 dark:bg-gray-800/50">
+              {/* Tool Section */}
+              <div className="border-b border-gray-200 dark:border-gray-700 p-4 bg-gray-50 dark:bg-gray-800/50 shrink-0">
                 {renderToolComponent()}
               </div>
-              <div className="flex-1 p-4 flex flex-col">
+              
+              {/* Output Section */}
+              <div className="flex-1 px-4 pb-4 pt-2 flex flex-col shrink-0">
                 <TextArea
                   label="Output"
                   value={output}
                   readOnly
-                  placeholder="Processed result..."
+                  placeholder="Processed result"
                   onChange={() => {}}
                 />
               </div>
