@@ -2,23 +2,16 @@ package main
 
 import (
 	"encoding/json"
-	"io/fs"
 	"log"
 	"net/http"
 	"os"
 
 	"github.com/kartikangiras/text-forge/internal"
-	"github.com/kartikangiras/text-forge/ui"
 )
 
 type StringProcessor func(string) (string, error)
 
 func main() {
-	distFS, err := fs.Sub(ui.Assets, "dist")
-	if err != nil {
-		log.Fatal("Frontend build not found:", err)
-	}
-
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("POST /api/fmt/css", makeHandler(internal.MinifyCSS))
@@ -35,9 +28,6 @@ func main() {
 	mux.HandleFunc("POST /api/fmt/pass", handlePassword)
 	mux.HandleFunc("POST /api/fmt/case", handleCaseConvert)
 	mux.HandleFunc("POST /api/fmt/stats", handleTextStats)
-
-	fileServer := http.FileServer(http.FS(distFS))
-	mux.Handle("/", fileServer)
 
 	port := os.Getenv("PORT")
 	if port == "" {
