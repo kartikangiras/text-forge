@@ -1,5 +1,12 @@
+const API_BASE_URL = import.meta.env.PROD 
+  ? "https://textio-62w2.onrender.com" 
+  : "http://localhost:8080";           
+
 export async function sendRequest(endpoint: string, payload: unknown) {
-  const res = await fetch(endpoint, {
+  
+  const fullUrl = `${API_BASE_URL}${endpoint}`;
+
+  const res = await fetch(fullUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
