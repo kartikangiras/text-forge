@@ -113,11 +113,11 @@ const tools = [
         })}
       </div>
 
-      <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
-        <h3 className="font-medium text-amber-900 dark:text-amber-100 mb-2">
+      <div className="bg-gray-50 dark:bg-gray-900/80 border border-black-200 dark:border-black-800 rounded-lg p-3 mt-3">
+        <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2">
           Security Note
         </h3>
-        <p className="text-xs text-amber-700 dark:text-amber-300">
+        <p className="text-xs text-gray-700 dark:text-gray-300">
           SHA-256 hashing is one-way and cannot be reversed. Base64 and URL encoding are not encryption methods.
         </p>
       </div>

@@ -120,11 +120,11 @@ const Generators: React.FC<GeneratorsProps> = ({ onOutput }) => {
         </div>
       </div>
 
-      <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
-        <h3 className="font-medium text-green-900 dark:text-green-100 mb-2">
+      <div className="bg-gray-50 dark:bg-gray-900/80 border border-black-200 dark:border-black-800 rounded-lg p-3 mt-3">
+        <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-1">
           Security Best Practices
         </h3>
-        <p className="text-sm text-green-700 dark:text-green-300">
+        <p className="text-sm text-gray-700 dark:text-gray-300">
           Use strong passwords with mixed characters. UUIDs are suitable for unique identifiers but not for security purposes.
         </p>
       </div>
