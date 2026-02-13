@@ -46,7 +46,7 @@ const StatsBar: React.FC<StatsBarProps> = ({ stats }) => {
             rel="noopener noreferrer"
             className="font-medium text-primary hover:underline transition-all"
           >
-            Kartik Angiras
+            Kartik
           </a>
         </div>
 
